@@ -18,6 +18,12 @@
     <ClInclude Include="estudiante.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="profesor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="listas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="estudiante.cpp">
@@ -28,6 +34,9 @@
     </ClCompile>
     <ClCompile Include="Recordatorio.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="profesorClase.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
