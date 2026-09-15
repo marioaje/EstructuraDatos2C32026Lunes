@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include "profesor.h"
 
 int main() {
 	std::cout << "Recordatorio de Arreglo\n";
@@ -35,4 +36,9 @@ int main() {
 	std::cout << "punteroNumero: " << punteroNumero << std::endl;
 
 
+	Profesor profesorEstructura;
+	profesorEstructura.edad = 30;
+	profesorEstructura.id = 1;
+	profesorEstructura.salario = 1000.50;
+	profesorEstructura.nombre = "Profe Mario";
 }
