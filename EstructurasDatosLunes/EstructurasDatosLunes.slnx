@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="EstructurasDatosLunes/EstructurasDatosLunes.vcxproj" />
+  <Project Path="EstructurasDatosLunes/EstructurasDatosLunes.vcxproj" Id="9d032abd-a593-4fe6-9e91-eb5d7640755e" />
 </Solution>

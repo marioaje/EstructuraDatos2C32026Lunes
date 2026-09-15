@@ -26,5 +26,8 @@
     <ClCompile Include="LunesEstructuras.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Recordatorio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
