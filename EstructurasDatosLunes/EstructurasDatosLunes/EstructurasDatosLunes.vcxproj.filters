@@ -35,8 +35,11 @@
     <ClCompile Include="Recordatorio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="profesorClase.cpp">
+    <ClCompile Include="profesorClase.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="funcionesRecursivas.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
