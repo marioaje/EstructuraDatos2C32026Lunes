@@ -142,6 +142,7 @@
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="estudiante.h" />
     <ClInclude Include="listas.h" />
+    <ClInclude Include="NaryTree.h" />
     <ClInclude Include="profesor.h" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,8 @@
     <ClCompile Include="estudiante.cpp" />
     <ClCompile Include="funcionesRecursivas.cpp" />
     <ClCompile Include="LunesEstructuras.cpp" />
+    <ClCompile Include="NaryTree.cpp" />
+    <ClCompile Include="NaryTreeMain.cpp" />
     <ClCompile Include="profesorClase.h" />
     <ClCompile Include="Recordatorio.cpp" />
   </ItemGroup>
