@@ -62,6 +62,26 @@ void NaryTree::preorden(NaryNode* node) {
 //Preorden: 24, 13, 1, 7, 7, 61, 45, 58, 90, 88, 6, 9, 100, 7
 
 
+
+
+void NaryTree::postordenAuxiliar() {
+	postorden(root);
+	std::cout << std::endl;
+}
+
+
+void NaryTree::postorden(NaryNode* node) {
+	if (node != nullptr) {
+		
+
+		for (NaryNode* child : node->children) {
+			postorden(child);
+		}
+
+		std::cout << node->data << " ";
+
+	}
+}
 //	bool addChild(NaryNode* parent, int val);
 //
 //

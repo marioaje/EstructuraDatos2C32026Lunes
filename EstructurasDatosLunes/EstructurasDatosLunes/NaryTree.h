@@ -31,7 +31,7 @@ private:
 
 	void preorden(NaryNode* node);
 	//void inorden(NaryNode* node);
-	//void postorden(NaryNode* node);
+	void postorden(NaryNode* node);
 
 	void destroyNaryTree(NaryNode* node);
 	//preorden : Arbol - N->nada(Salida pantalla)
@@ -51,7 +51,7 @@ public:
 	//Metodos auxiliares
 	void preordenAuxiliar();
 	//void inordenAuxiliar();
-	//void postordenAuxiliar();
+	void postordenAuxiliar();
 };
 
 

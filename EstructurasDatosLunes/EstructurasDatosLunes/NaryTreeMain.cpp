@@ -32,6 +32,9 @@ int main() {
 	std::cout << "preordenAuxiliar " << std::endl;
 	tree.preordenAuxiliar();
 
+	std::cout << "postordenAuxiliar " << std::endl;
+	tree.postordenAuxiliar();
+
 //Preorden: 24, 13, 1, 7, 7, 61, 45, 58, 90, 88, 6, 9, 100, 7
 //
 // 
