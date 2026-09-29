@@ -24,6 +24,9 @@
     <ClInclude Include="listas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="estudiante.cpp">
@@ -39,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="funcionesRecursivas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTreeMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

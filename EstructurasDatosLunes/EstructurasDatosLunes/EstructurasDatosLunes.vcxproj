@@ -139,11 +139,14 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="estudiante.h" />
     <ClInclude Include="listas.h" />
     <ClInclude Include="profesor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BinaryTree.cpp" />
+    <ClCompile Include="BinaryTreeMain.cpp" />
     <ClCompile Include="estudiante.cpp" />
     <ClCompile Include="funcionesRecursivas.cpp" />
     <ClCompile Include="LunesEstructuras.cpp" />
