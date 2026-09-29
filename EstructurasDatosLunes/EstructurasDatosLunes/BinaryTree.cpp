@@ -16,6 +16,20 @@ BinaryTree::BinaryTree()//Constructor
 }
 
 
+BinaryTree::~BinaryTree() {
+	destroyBinaryTree(root);
+}
+
+
+void BinaryTree::destroyBinaryTree(Node* node) {
+	if (node != nullptr) {
+		destroyBinaryTree(node->left);
+		destroyBinaryTree(node->right);
+		delete node;
+	}
+}
+
+
 //???
 void BinaryTree::insert(int val) {
 	root = insert(root, val);
@@ -51,6 +65,43 @@ void BinaryTree::preorden(Node* node) {
 		std::cout << node->data << " ";//Primero raiz
 		preorden(node->left);//Luego izquierda
 		preorden(node->right);//Luego derecha
+	}
+}
+
+
+
+void BinaryTree::inordenAuxiliar() {
+	inorden(root);
+	std::cout << std::endl;
+}
+
+void BinaryTree::inorden(Node* node) {
+
+	if (node != nullptr) {
+		inorden(node->left);//Luego izquierda
+
+		std::cout << node->data << " ";//Primero raiz
+		
+		inorden(node->right);//Luego derecha
+	}
+}
+
+
+
+
+void BinaryTree::postordenAuxiliar() {
+	postorden(root);
+	std::cout << std::endl;
+}
+
+void BinaryTree::postorden(Node* node) {
+
+	if (node != nullptr) {
+		postorden(node->left);//Luego izquierda
+
+		postorden(node->right);//Luego derecha
+
+		std::cout << node->data << " ";//Primero raiz
 	}
 }
 

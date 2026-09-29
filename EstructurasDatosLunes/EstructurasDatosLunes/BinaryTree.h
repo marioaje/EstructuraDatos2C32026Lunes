@@ -33,18 +33,22 @@ private:
 	Node* insert(Node* node, int val);
 
 	void preorden(Node* node);
+	void inorden(Node* node);
+	void postorden(Node* node);
+
+	void destroyBinaryTree(Node* node);
 	//preorden : Arbol - N->nada(Salida pantalla)
 	//inorden : Arbol - N->nada(Salida pantalla)
 	//postorden : Arbol - N->nada(Salida pantalla)
 
 public:
 	BinaryTree();//Constructor
-	//~BinaryTree();//Destrutor
+    ~BinaryTree();//Destrutor
 
 	void insert(int val);
 	void preordenAuxiliar();
-	void inorden();
-	void postorden();
+	void inordenAuxiliar();
+	void postordenAuxiliar();
 };
 
 

@@ -22,7 +22,12 @@ int main() {
 	tree.insert( 90 );
 	tree.insert( 4 );
 	
+	std::cout << "preordenAuxiliar: ";
 	tree.preordenAuxiliar();
+	std::cout << "postordenAuxiliar: ";
+	tree.postordenAuxiliar();
+	std::cout << "inordenAuxiliar: ";
+	tree.inordenAuxiliar();
 
 	return 0;
 }
