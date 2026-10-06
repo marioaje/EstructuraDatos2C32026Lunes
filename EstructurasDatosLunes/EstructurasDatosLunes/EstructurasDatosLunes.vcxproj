@@ -139,6 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="avl.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="estudiante.h" />
     <ClInclude Include="listas.h" />
@@ -146,6 +147,8 @@
     <ClInclude Include="profesor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AVL.cpp" />
+    <ClCompile Include="AVLMain.cpp" />
     <ClCompile Include="BinaryTree.cpp" />
     <ClCompile Include="BinaryTreeMain.cpp" />
     <ClCompile Include="estudiante.cpp" />
