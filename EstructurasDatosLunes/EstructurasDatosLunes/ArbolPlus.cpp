@@ -33,6 +33,9 @@ void ArbolPlus::insertEnHoja(NodeBPlus* nodeHoja, int val) {
 		nodeHoja->claves[i + 1] = nodeHoja->claves[i];
 		i--;
 	}
+
+	nodeHoja->claves[i + 1] = val;
+	nodeHoja->cantidad++;
 }
 
 
@@ -63,12 +66,12 @@ void ArbolPlus::insert(int valor) {
 		izquierda->cantidad = 1;
 
 
-		derecha->claves[0] = root->claves[1];
-		derecha->claves[1] = root->claves[2];
+		derecha->claves[0] = root->claves[1];//Valores 
+		derecha->claves[1] = root->claves[2];//Valores 
 
 		//Interconecte las hojas
 		izquierda->siguiente = derecha;
-
+		//Creamos una nueva raiz.
 		NodeBPlus* nuevaRaiz = crearNodo(false);
 
 		nuevaRaiz->claves[0] = derecha->claves[0];
@@ -83,7 +86,7 @@ void ArbolPlus::insert(int valor) {
 
 		return;
 	}
-	std::cout << "La siguiente etapa de acceso a los splits";
+	std::cout << "La siguiente etapa de acceso a los splits" << std::endl;
 
 
 
@@ -103,6 +106,15 @@ void ArbolPlus::mostrarArbol() {
 
 	NodeBPlus* actual = root;
 
+
+	//if (node != nullptr) { -1
+	//	inorden(node->left);//Luego izquierda
+
+	//	std::cout << node->data << " ";//Primero raiz
+
+	//	inorden(node->right);//Luego derecha
+	//}
+	// 
 	//Buscar en la hoja que este mas la izquierda
 	while (!actual->esHoja) {
 		actual = actual->hijos[0];
@@ -110,7 +122,7 @@ void ArbolPlus::mostrarArbol() {
 	//std::cout << "El arbol esta vacio" << std::endl;
 	std::cout << "El valor de la hoja: ";
 
-	if (actual != nullptr) {
+	while (actual != nullptr) {
 		std::cout << " [ ";
 
 		for (int  i = 0; i < actual->cantidad; i++)
