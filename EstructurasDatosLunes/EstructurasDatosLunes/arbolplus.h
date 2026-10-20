@@ -1,45 +1,51 @@
+#pragma once
 
-const int MAX_CLAVES = 3;//Maximo de insercciones node
+const int MAX_CLAVES = 3;
 
-struct NodeBPlus
+struct NodeBPplus
 {
-	int claves[MAX_CLAVES + 1];
+    int claves[MAX_CLAVES + 1];
+    NodeBPplus* hijos[MAX_CLAVES + 2];
 
-	NodeBPlus* hijos[MAX_CLAVES + 2];
+    int cantidad;
+    bool esHoja;
 
-	int cantidad;
-	bool esHoja;
-
-
-	NodeBPlus* siguiente;
-
+    NodeBPplus* siguiente;
 };
-
 
 class ArbolPlus
 {
-
-
 private:
-	NodeBPlus* root;
+    NodeBPplus* root;
 
-	NodeBPlus* crearNodo(bool esHoja);
+    NodeBPplus* crearNodo(bool esHoja);
 
-	void insertEnHoja(NodeBPlus* node, int val);
+    void insertEnHoja(NodeBPplus* nodeHoja, int val);
 
-	void dividirEnHoja(NodeBPlus* node, int val);
+    void dividirEnHoja(NodeBPplus* nodeHoja, int val);
 
+    bool insertarNodo(
+        NodeBPplus* node,
+        int val,
+        int& claveSube,
+        NodeBPplus*& derecha
+    );
 
+    void dividirNodoInterno(
+        NodeBPplus* node,
+        int& claveSube,
+        NodeBPplus*& derecha
+    );
+
+    void liberar(NodeBPplus* node);
 
 public:
+    ArbolPlus();
+    ~ArbolPlus();
 
-	ArbolPlus();
+    ArbolPlus(const ArbolPlus&) = delete;
+    ArbolPlus& operator=(const ArbolPlus&) = delete;
 
-	void insert(int val);
-
-	void mostrarArbol();
-	
+    void insert(int val);
+    void mostrarArbol();
 };
-
-
-

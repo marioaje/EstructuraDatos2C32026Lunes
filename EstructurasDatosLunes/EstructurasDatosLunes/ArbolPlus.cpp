@@ -1,148 +1,273 @@
+
 #include <iostream>
 #include "arbolplus.h"
 
-
 ArbolPlus::ArbolPlus() {
-	root = nullptr;
+    root = nullptr;
 }
 
-NodeBPlus* ArbolPlus::ArbolPlus::crearNodo(bool esHoja) {
-	NodeBPlus* nuevo = new NodeBPlus;
+ArbolPlus::~ArbolPlus() {
+    liberar(root);
+}
 
-	nuevo->cantidad = 0;
+NodeBPplus* ArbolPlus::crearNodo(bool esHoja) {
+    NodeBPplus* nuevo = new NodeBPplus;
 
-	nuevo->esHoja = esHoja;
+    nuevo->cantidad = 0;
+    nuevo->esHoja = esHoja;
+    nuevo->siguiente = nullptr;
 
-	nuevo->siguiente = nullptr;
+    for (int i = 0; i < MAX_CLAVES + 2; i++) {
+        nuevo->hijos[i] = nullptr;
+    }
+
+    return nuevo;
+}
+
+// Insertar un valor ordenadamente en una hoja
+void ArbolPlus::insertEnHoja(NodeBPplus* nodeHoja, int val) {
+    int i = nodeHoja->cantidad - 1;
+
+    while (i >= 0 && nodeHoja->claves[i] > val) {
+        nodeHoja->claves[i + 1] = nodeHoja->claves[i];
+        i--;
+    }
+
+    nodeHoja->claves[i + 1] = val;
+    nodeHoja->cantidad++;
+}
 
 
-	for (int i = 0; i < MAX_CLAVES; i++)
-	{
-		nuevo->hijos[i] = nullptr;
-	}
-	return nuevo;
+// Dividir un nodo interno lleno
+void ArbolPlus::dividirNodoInterno(
+    NodeBPplus* node,
+    int& claveSube,
+    NodeBPplus*& derecha
+) {
+    derecha = crearNodo(false);
+
+    int mitad = node->cantidad / 2;
+    int total = node->cantidad;
+
+    claveSube = node->claves[mitad];
+
+    // Claves que pasan al nodo derecho
+    for (int i = mitad + 1; i < total; i++) {
+        derecha->claves[derecha->cantidad] = node->claves[i];
+        derecha->cantidad++;
+    }
+
+    // Hijos que pasan al nodo derecho
+    int j = 0;
+
+    for (int i = mitad + 1; i <= total; i++) {
+        derecha->hijos[j] = node->hijos[i];
+        node->hijos[i] = nullptr;
+        j++;
+    }
+
+    node->cantidad = mitad;
+}
+
+//Dividir en una hoja llena
+void ArbolPlus::dividirEnHoja(NodeBPplus* nodeHoja, int val) {
+
+
+    std::cout << "dividirEnHoja valor: " << val << " cantidad anterior: " << nodeHoja->cantidad << std::endl;
+    //Insertamos temporalemte una hoja en la cuarta clave ultimo elemento
+    insertEnHoja(nodeHoja, val);
+
+    NodeBPplus* derecha = crearNodo(true);
+
+    int mitad = nodeHoja->cantidad / 2;
+    int total = nodeHoja->cantidad;
+
+    for (int i = mitad; i < total; i++)
+    {
+        derecha->claves[derecha->cantidad] = nodeHoja->claves[i];
+        derecha->cantidad++;
+
+    }
+
+    nodeHoja->cantidad = mitad;
+
+    //Conectamos las hojas
+    derecha->siguiente = nodeHoja->siguiente;
+    nodeHoja->siguiente = derecha;
+
+
 
 }
 
 
-//Insertamos las hojas ordenamente
-void ArbolPlus::insertEnHoja(NodeBPlus* nodeHoja, int val) {
-	int i = nodeHoja->cantidad - 1;
+// Inserción recursiva
+bool ArbolPlus::insertarNodo(
+    NodeBPplus* node,
+    int val,
+    int& claveSube,
+    NodeBPplus*& derecha
+) {
+    // Si estamos en una hoja
+    if (node->esHoja) {
 
-	while (i >= 0 && nodeHoja->claves[i] > val) {
-		nodeHoja->claves[i + 1] = nodeHoja->claves[i];
-		i--;
-	}
+        if (node->cantidad < MAX_CLAVES) {
+            insertEnHoja(node, val);
+            return false;
+        }
 
-	nodeHoja->claves[i + 1] = val;
-	nodeHoja->cantidad++;
+        // La hoja se llenó
+        dividirEnHoja(node, val);
+
+        derecha = node->siguiente;
+        claveSube = derecha->claves[0];
+
+        return true;
+    }
+
+    // Buscar el hijo correspondiente
+    int posicion = 0;
+
+    while (posicion < node->cantidad&&
+        val >= node->claves[posicion]) {
+        posicion++;
+    }
+
+    int nuevaClave = 0;
+    NodeBPplus* nuevoHijo = nullptr;
+
+    bool dividido = insertarNodo(
+        node->hijos[posicion],
+        val,
+        nuevaClave,
+        nuevoHijo
+    );
+
+    if (!dividido) {
+        return false;
+    }
+
+    // Desplazar claves
+    for (int i = node->cantidad; i > posicion; i--) {
+        node->claves[i] = node->claves[i - 1];
+    }
+
+    // Desplazar hijos
+    for (int i = node->cantidad + 1; i > posicion + 1; i--) {
+        node->hijos[i] = node->hijos[i - 1];
+    }
+
+    node->claves[posicion] = nuevaClave;
+    node->hijos[posicion + 1] = nuevoHijo;
+    node->cantidad++;
+
+    if (node->cantidad <= MAX_CLAVES) {
+        return false;
+    }
+
+    // Dividir nodo interno
+    dividirNodoInterno(node, claveSube, derecha);
+    return true;
 }
-
 
 void ArbolPlus::insert(int valor) {
-	//Vaidamos si esa vacio
-	if (root == nullptr) {
-		root = crearNodo(true);
-		insertEnHoja(root, valor);
+    // Árbol vacío
+    if (root == nullptr) {
+        root = crearNodo(true);
+        insertEnHoja(root, valor);
+        return;
+    }
 
-		return;
-	}
+    // Verificar duplicados
+    NodeBPplus* actual = root;
 
+    while (!actual->esHoja) {
+        int i = 0;
 
-	if (root->esHoja) {
-		//Verificamos espacio en la hoja;
-		if (root->cantidad < MAX_CLAVES) {
-			insertEnHoja(root, valor);
-			return;
-		}
+        while (i < actual->cantidad &&
+            valor >= actual->claves[i]) {
+            i++;
+        }
 
-		//La raiz este llena, entonces divide y guarda
+        actual = actual->hijos[i];
+    }
 
+    for (int i = 0; i < actual->cantidad; i++) {
+        if (actual->claves[i] == valor) {
+            std::cout << "El valor " << valor
+                << " ya existe.\n";
+            return;
+        }
+    }
 
-		NodeBPlus* izquierda = crearNodo(true);
-		NodeBPlus* derecha = crearNodo(true);
+    int claveSube = 0;
+    NodeBPplus* derecha = nullptr;
 
-		izquierda->claves[0] = root->claves[0];
-		izquierda->cantidad = 1;
+    bool dividido = insertarNodo(
+        root, valor, claveSube, derecha
+    );
 
+    // Crear una nueva raíz si la anterior se dividió
+    if (dividido) {
+        NodeBPplus* nuevaRaiz = crearNodo(false);
 
-		derecha->claves[0] = root->claves[1];//Valores 
-		derecha->claves[1] = root->claves[2];//Valores 
+        nuevaRaiz->claves[0] = claveSube;
+        nuevaRaiz->cantidad = 1;
 
-		//Interconecte las hojas
-		izquierda->siguiente = derecha;
-		//Creamos una nueva raiz.
-		NodeBPlus* nuevaRaiz = crearNodo(false);
+        nuevaRaiz->hijos[0] = root;
+        nuevaRaiz->hijos[1] = derecha;
 
-		nuevaRaiz->claves[0] = derecha->claves[0];
-		nuevaRaiz->cantidad = 1;
-
-		nuevaRaiz->hijos[0] = izquierda;
-		nuevaRaiz->hijos[1] = derecha;
-
-		delete root;
-
-		root = nuevaRaiz;
-
-		return;
-	}
-	std::cout << "La siguiente etapa de acceso a los splits" << std::endl;
-
-
-
+        root = nuevaRaiz;
+    }
 }
 
-
-
 void ArbolPlus::mostrarArbol() {
-	if (root == nullptr) {
-		std::cout << "El arbol esta vacio" << std::endl;
-		return;
-	}
-	/*else {
-		std::cout << "El arbol no esta vacio" << std::endl;
-		return;
-	}*/
+    if (root == nullptr) {
+        std::cout << "El arbol esta vacio.\n";
+        return;
+    }
 
-	NodeBPlus* actual = root;
+    NodeBPplus* actual = root;
 
+    // Buscar la hoja más a la izquierda
+    while (!actual->esHoja) {
+        actual = actual->hijos[0];
+    }
 
-	//if (node != nullptr) { -1
-	//	inorden(node->left);//Luego izquierda
+    std::cout << "Hoja: ";
 
-	//	std::cout << node->data << " ";//Primero raiz
+    while (actual != nullptr) {
+        std::cout << "[ ";
 
-	//	inorden(node->right);//Luego derecha
-	//}
-	// 
-	//Buscar en la hoja que este mas la izquierda
-	while (!actual->esHoja) {
-		actual = actual->hijos[0];
-	}
-	//std::cout << "El arbol esta vacio" << std::endl;
-	std::cout << "El valor de la hoja: ";
+        for (int i = 0; i < actual->cantidad; i++) {
+            std::cout << actual->claves[i];
 
-	while (actual != nullptr) {
-		std::cout << " [ ";
+            if (i < actual->cantidad - 1) {
+                std::cout << " | ";
+            }
+        }
 
-		for (int  i = 0; i < actual->cantidad; i++)
-		{
-			std::cout << actual->claves[i];
+        std::cout << " ]";
 
-			if (i < actual->cantidad - 1) {
-				std::cout << " ||| ";
-			}
-		}
-		std::cout << " ] ";
+        actual = actual->siguiente;
 
-		actual = actual->siguiente;
-		if (actual != nullptr) {
-			std::cout << " -> ";
-		}
+        if (actual != nullptr) {
+            std::cout << " -> ";
+        }
+    }
 
-		std::cout << " " << std::endl;
+    std::cout << std::endl;
+}
 
-	}
+void ArbolPlus::liberar(NodeBPplus* node) {
+    if (node == nullptr) {
+        return;
+    }
 
+    if (!node->esHoja) {
+        for (int i = 0; i <= node->cantidad; i++) {
+            liberar(node->hijos[i]);
+        }
+    }
 
+    delete node;
 }
