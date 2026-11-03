@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="arbolplus.h" />
+    <ClInclude Include="arborojonegro.h" />
     <ClInclude Include="avl.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="estudiante.h" />
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="ArbolPlus.cpp" />
     <ClCompile Include="ArbolPlusMain.cpp" />
+    <ClCompile Include="ArbolRojoNegro.cpp" />
     <ClCompile Include="AVL.cpp" />
     <ClCompile Include="AVLMain.cpp" />
     <ClCompile Include="BinaryTree.cpp" />
