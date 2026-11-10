@@ -36,6 +36,9 @@
     <ClInclude Include="arbolplus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="arborojonegro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="estudiante.cpp">
@@ -75,6 +78,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ArbolPlusMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArbolMainRN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArbolRojoNegro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="memoriadinamica.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

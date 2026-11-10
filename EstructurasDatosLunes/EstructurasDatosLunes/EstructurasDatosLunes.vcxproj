@@ -149,6 +149,7 @@
     <ClInclude Include="profesor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArbolMainRN.cpp" />
     <ClCompile Include="ArbolPlus.cpp" />
     <ClCompile Include="ArbolPlusMain.cpp" />
     <ClCompile Include="ArbolRojoNegro.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="estudiante.cpp" />
     <ClCompile Include="funcionesRecursivas.cpp" />
     <ClCompile Include="LunesEstructuras.cpp" />
+    <ClCompile Include="memoriadinamica.cpp" />
     <ClCompile Include="NaryTree.cpp" />
     <ClCompile Include="NaryTreeMain.cpp" />
     <ClCompile Include="profesorClase.h" />
