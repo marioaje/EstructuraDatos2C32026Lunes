@@ -160,6 +160,7 @@
     <ClCompile Include="estudiante.cpp" />
     <ClCompile Include="funcionesRecursivas.cpp" />
     <ClCompile Include="LunesEstructuras.cpp" />
+    <ClCompile Include="memoriacalloc.cpp" />
     <ClCompile Include="memoriadinamica.cpp" />
     <ClCompile Include="NaryTree.cpp" />
     <ClCompile Include="NaryTreeMain.cpp" />
