@@ -11,19 +11,19 @@
 //	int cantiades;
 //	int* datos;
 //
-//	cout << "Ejemplo de memoria dinamica en C++ (Malloc y Free)" << endl;
+//	cout << "ejemplo de memoria dinamica en c++ (malloc y free)" << endl;
 //
 //	//reserva en la memoria dinamica
 //	cantiades = 10;
 //	datos = (int*)malloc(cantiades * sizeof(int));
 //
 //
-//	//Mostrar la direccion de memoria
+//	//mostrar la direccion de memoria
 //
-//	cout << "Direccion de memoria reservada: " << datos << endl;
+//	cout << "direccion de memoria reservada: " << datos << endl;
 //
-//	//Tamano de la memoria reservada
-//	cout << "Tamano de la memoria reservada: " << cantiades * sizeof(int) << " bytes" << endl;
+//	//tamano de la memoria reservada
+//	cout << "tamano de la memoria reservada: " << cantiades * sizeof(int) << " bytes" << endl;
 //
 //
 //	for (int i = 0; i < cantiades; i++)
@@ -33,24 +33,24 @@
 //
 //
 //	if (datos == nullptr) {
-//		cout << "Error al reservar memoria" << endl;
+//		cout << "error al reservar memoria" << endl;
 //		return 1;
 //	}
 //
 //	free(datos); //liberar memoria reservada
 //	datos = nullptr; //evitar dangling pointer
 //
-//	//Mostrar la direccion de memoria
+//	//mostrar la direccion de memoria
 //
-//	cout << "Direccion de memoria reservada despues del free: " << datos << endl;
+//	cout << "direccion de memoria reservada despues del free: " << datos << endl;
 //
-//	//Tamano de la memoria reservada
-//	cout << "Tamano de la memoria reservada despues del free: " << cantiades * sizeof(int) << " bytes" << endl;
+//	//tamano de la memoria reservada
+//	cout << "tamano de la memoria reservada despues del free: " << cantiades * sizeof(int) << " bytes" << endl;
 //
 //
 //
 //	if (datos == nullptr) {
-//		cout << "Error al reservar memoria, despues del free" << endl;
+//		cout << "error al reservar memoria, despues del free" << endl;
 //		return 1;
 //	}
 //

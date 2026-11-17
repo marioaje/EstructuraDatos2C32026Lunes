@@ -159,6 +159,7 @@
     <ClCompile Include="BinaryTreeMain.cpp" />
     <ClCompile Include="estudiante.cpp" />
     <ClCompile Include="funcionesRecursivas.cpp" />
+    <ClCompile Include="hilos.cpp" />
     <ClCompile Include="LunesEstructuras.cpp" />
     <ClCompile Include="memoriacalloc.cpp" />
     <ClCompile Include="memoriadinamica.cpp" />
