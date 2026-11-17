@@ -163,10 +163,12 @@
     <ClCompile Include="LunesEstructuras.cpp" />
     <ClCompile Include="memoriacalloc.cpp" />
     <ClCompile Include="memoriadinamica.cpp" />
+    <ClCompile Include="mutex.cpp" />
     <ClCompile Include="NaryTree.cpp" />
     <ClCompile Include="NaryTreeMain.cpp" />
     <ClCompile Include="profesorClase.h" />
     <ClCompile Include="Recordatorio.cpp" />
+    <ClCompile Include="semaforo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
