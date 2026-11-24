@@ -108,10 +108,23 @@ public:
 	}
 
 	bool buscar(int clave) {
+		int indice = fusionHashing(clave);
+	
 
 
+			for (int valor : tabla[indice]) {
+				if (clave == valor) {
+					return true;
+				}
+			}
+	
 		return false;
 	 }
+
+	void eliminar(int clave) {
+
+	}
+
 };
 
 int main() {
@@ -124,7 +137,11 @@ int main() {
 
 	hash.mostrar();
 
+	if (hash.buscar(100))
+		cout << "*** Valor encontrado: 10" << endl;
+	else
+		cout << "*** Valor no encontrado: 10" << endl;
 
-
+	return 0;
 
 }
