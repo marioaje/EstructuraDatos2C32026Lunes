@@ -106,6 +106,12 @@ public:
 		cout << "Cantidad: " << cantidad << endl;
 		cout << "***El valor de carga: " << factorCarga() * 100 << "%" << endl;
 	}
+
+	bool buscar(int clave) {
+
+
+		return false;
+	 }
 };
 
 int main() {
