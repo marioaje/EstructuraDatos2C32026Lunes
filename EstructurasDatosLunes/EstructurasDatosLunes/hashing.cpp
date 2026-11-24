@@ -122,7 +122,20 @@ public:
 	 }
 
 	void eliminar(int clave) {
+		int indice = fusionHashing(clave);
 
+		for (auto itemportal = tabla[indice].begin(); itemportal != tabla[indice].end(); itemportal++)
+		{
+			if (*itemportal == clave) {
+				tabla[indice].erase(itemportal);
+
+				cantidad--;
+				cout << "La clave n:" << clave << " , eliminada \n";
+				return;
+			}
+		}
+
+		cout << "La clave n:" << clave << " ,no existe \n";
 	}
 
 };
@@ -136,8 +149,8 @@ int main() {
 	hash.insertar(32);
 
 	hash.mostrar();
-
-	if (hash.buscar(100))
+	hash.eliminar(10);
+	if (hash.buscar(10))
 		cout << "*** Valor encontrado: 10" << endl;
 	else
 		cout << "*** Valor no encontrado: 10" << endl;
