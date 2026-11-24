@@ -90,7 +90,22 @@ public:
 
 	}
 
+	void mostrar() {
+		cout << "***Mostrar datos hashing" << endl;
 
+		for (int i = 0; i < capacidad; i++)
+		{
+			cout << "[" << i << "], ->>>"; 
+			for (int clave : tabla[i]) {
+				cout << clave << " --->>>";
+			}
+			cout << "Vacio\n";
+		}
+
+		cout << "Capacidad de elementos: " << cantidad << endl;
+		cout << "Cantidad: " << cantidad << endl;
+		cout << "***El valor de carga: " << factorCarga() * 100 << "%" << endl;
+	}
 };
 
 int main() {
@@ -100,6 +115,8 @@ int main() {
 	hash.insertar(10);
 	hash.insertar(21);
 	hash.insertar(32);
+
+	hash.mostrar();
 
 
 
